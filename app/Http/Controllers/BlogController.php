@@ -50,14 +50,19 @@ class BlogController extends Controller {
         }
     }
 
-    private function upload(Request $request, $id) {
+   private function upload(Request $request, $id) {
+
+    if ($request->hasFile('image')) { 
         $image = $request->file('image');
         $fileName = $id . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs('images', $fileName, 'public');
-        $path = $image->storeAs('images', $fileName, 'local');
-        return $path;
-        //dd([storage_path('app/public') . '/' . $path1, storage_path('app/private') . '/' . $path2]);
+        
+
+        $path = $image->storeAs('images', $fileName, 'public'); 
+        
+        return $path; 
     }
+    return null; 
+}
 
     function show(Blog $blog): View {
         $year = Carbon::now()->year;
