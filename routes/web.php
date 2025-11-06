@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 // main controller
 Route::get('/', [MainController::class, 'index'])->name('main.index');
 Route::get('copy', [MainController::class, 'copy'])->name('main.copy');
+// Route::get('image')
 
 // blog controller
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
